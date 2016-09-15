@@ -17,7 +17,7 @@ func download(){
 	UpdateCheck()
 	DownloadPlugin()
 
-	ticker := time.NewTicker(5 * time.Second)
+	ticker := time.NewTicker(2 * time.Second)
 	quit := make(chan bool)
 	for {
 		select {
