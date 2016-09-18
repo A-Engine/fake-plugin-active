@@ -24,7 +24,6 @@ func download(){
 		case  <- ticker.C:
 			UpdateCheck()
 			DownloadPlugin()
-			count++
 		case <- quit:
 			ticker.Stop()
 			return
@@ -73,7 +72,7 @@ func UpdateCheck() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	domain := GenerateRandomDomain(7)
+	domain := GenerateRandomDomain(10)
 	log.Println("Start domain: " + domain)
 	request.Header.Add("content-type", "application/x-www-form-urlencoded")
 	request.Header.Add("user-agent", "WordPress/4.5.3; " + domain)
@@ -90,6 +89,7 @@ func UpdateCheck() {
 	if(bodyString != "error"){
 		log.Println("Success!")
 	}
+	count++
 }
 
 func main() {
